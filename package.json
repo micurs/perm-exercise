@@ -1,7 +1,7 @@
 {
   "name": "perm-exercise",
   "version": "1.0.0",
-  "description": "",
+  "description": "An alghoritm that accepts a single string as input, and that returns a list of English words that can be created using some combination of the letters in the input string.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -11,8 +11,8 @@
     "start": "node dist/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Michele Ursino",
+  "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.9.0",
