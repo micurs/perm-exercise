@@ -23,7 +23,7 @@ export const indexFile = async (index: IndexTree, filePath: string): Promise<num
     }
     // Insert the last word
     if (w.length > 0) {
-      index.insert(w);
+      index.insert(w.toLowerCase());
       wordCount++;
     }
     return wordCount;

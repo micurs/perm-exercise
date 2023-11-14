@@ -128,7 +128,7 @@ export class IndexTree {
       }
       node = node.getChild(char)!;
     }
-    return node.value===word ? node.count : 0;
+    return node.count;
   }
 }
 

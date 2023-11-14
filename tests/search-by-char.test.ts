@@ -32,12 +32,10 @@ describe('findValidPermutations', () => {
     expect(matches.size).toEqual(5);
   });
 
-
-
   test('dictionary with 3 words in the index: 2 matches', () => {
     const index = new IndexTree();
-    index.insert('abc').insert('aaa').insert('bac');
-    const matches =  findValidPermutations(index, 'abc');
+    index.insert('ab').insert('ba').insert('bac');
+    const matches = findValidPermutations(index, 'ab');
     expect(matches.size).toEqual(2);
   });
 
@@ -50,16 +48,16 @@ describe('findValidPermutations', () => {
 
   test('dictionary with 3 words with common prefixes', () => {
     const index = new IndexTree();
-    index.insert('erde').insert('edre').insert('rtk');
-    const matches = findValidPermutations(index, 'dree');
-    expect(matches.size).toEqual(2);
+    index.insert('abc').insert('bca').insert('cab').insert('cba').insert('ab').insert('ac').insert('rtk');
+    const matches = findValidPermutations(index, 'cba');
+    expect(matches.size).toEqual(6);
   });
 
-  test('dictionary with 3 words with common prefixes', () => {
+  test('dictionary with 6 words with letters from the search', () => {
     const index = new IndexTree();
-    index.insert('erde').insert('edre').insert('rtk');
+    index.insert('erde').insert('edre').insert('eder').insert('ered').insert('eerd').insert('dree').insert('rtk');
     const matches = findValidPermutations(index, 'dree');
-    expect(matches.size).toEqual(2);
+    expect(matches.size).toEqual(6);
   });
 
 

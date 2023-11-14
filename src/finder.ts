@@ -10,11 +10,8 @@ import { extractAllChars } from "./utils";
  * @returns
  */
 const searchValidCombinations = (node: IndexNode, searchWord: string, out: Set<string>) => {
-  if (node.value) {
-    out.add(node.value);
-  }
-  if (node.childrenCount===0) {
-    return
+  if (node.childrenCount === 0) {
+    return;
   }
   // Extract all characters from the search word and iterate over them to
   // find matches starting with these characters.
@@ -24,21 +21,23 @@ const searchValidCombinations = (node: IndexNode, searchWord: string, out: Set<s
     if (!child) {
       return;
     }
-    if (remaining.length > 0) {
-      searchValidCombinations(child, remaining, out);
-    }
     // This child node represents a valid word so it is a match
     if (child.value) {
       out.add(child.value);
+    }
+    if (remaining.length > 0) {
+      searchValidCombinations(child, remaining, out);
     }
   });
 };
 
 /**
- * Finds all valid permutations of the search word in the index
- * @param index
- * @param searchWord
- * @returns
+ * Finds all valid permutations of the search word in the index.
+ * Note: the search is case-sensitive and it will find words that
+ * at most are as long as the search word.
+ * @param index - the index to search
+ * @param searchWord - the word to search for
+ * @returns a Set of strings containing the valid words in index and permutations of the input string.
  */
 export const findValidPermutations = (index: IndexTree, searchWord: string): Set<string> => {
   const matches = new Set<string>();
