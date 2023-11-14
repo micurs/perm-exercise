@@ -27,6 +27,12 @@ For example, with the input "dog", the algorithm explores paths starting with 'd
 
 This approach is efficient in exploring all possible word formations from various letter combinations in the input string, utilizing the Trie structure's inherent efficiency in managing and searching strings.
 
+However, the complexity of the search is approximately `O(L^2)` where L is the length
+of the input string. So, for very large input string the search can slow down
+considerably from a few millisecond to multiple seconds for very long input strings.
+
+This  algorithm, due to its nature of independently processing each pair of [char, string], is well-suited for parallelization. In a multi-threaded environment, each recursive exploration with a pair can indeed be executed on a separate thread, potentially leading to a significant performance improvement, especially for larger input strings and large dictionaries.
+
 
 ## Interactive console demo
 

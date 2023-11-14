@@ -13,7 +13,9 @@ indexFile(index, 'english-large.txt')
   while(!done) {
     const searchWord = prompt('Enter a word to search for: ');
     if (searchWord && searchWord !== '#quit') {
+      console.time('search');
       const matches = findValidPermutations(index, searchWord);
+      console.timeEnd('search');
       console.log(`Found ${matches.size} valid words containing letters from "${searchWord}": `, [...matches.values()]);
     } else {
       done = true;
